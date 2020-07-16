@@ -1,0 +1,20 @@
+.rightSide {
+  padding-left: 2%;
+  height: 100%;
+  width: 15%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: rgb(196, 196, 196);
+  padding-top: 8%;
+}
+
+td {
+  font-size: 0.85rem;
+  width: 50%;
+}
+
+.memberItem {
+  margin-top: 5%;
+}

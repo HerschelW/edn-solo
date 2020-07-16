@@ -1,0 +1,9 @@
+.resourceList {
+  width: 60%;
+  margin: auto;
+}
+
+.resourceItem {
+  align-items: center;
+  text-align: center;
+}
