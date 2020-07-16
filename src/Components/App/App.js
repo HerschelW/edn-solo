@@ -28,8 +28,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="leftSidebar"></div>
-        <div className="rightSidebar"></div>
         <Router>
           <Header />
           <div>

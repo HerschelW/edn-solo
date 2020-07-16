@@ -23,7 +23,7 @@ class Edit extends Component {
   };
 
   cancel = (event) => {
-    this.props.history.push("/");
+    this.props.history.push("/resources");
   };
 
   submitInfo = (event) => {
@@ -45,10 +45,11 @@ class Edit extends Component {
 
   render() {
     return (
-      <div>
+      <div className="content addContent">
         <p>New Resource Title:</p>
         <form onSubmit={this.submitInfo}>
-          <TextField
+          <textarea
+            className="postTitle"
             type="text"
             required
             //placeholder="New Title"
@@ -57,7 +58,8 @@ class Edit extends Component {
           />
           <br />
           <p>New Resource Content:</p>
-          <TextField
+          <textarea
+            className="postContent"
             type="text"
             required
             //placeholder="New Description"
@@ -68,22 +70,24 @@ class Edit extends Component {
           />
           <br />
           <br />
-          <Button
+          <button
+            className="btn"
             variant="contained"
             color="primary"
             size="small"
             type="submit"
           >
             Submit
-          </Button>
-          <Button
+          </button>
+          <button
+            className="btn"
             variant="contained"
             color="secondary"
             size="small"
             onClick={this.cancel}
           >
             Cancel
-          </Button>
+          </button>
         </form>
       </div>
     );
@@ -94,3 +98,43 @@ const mapStateToProps = (state) => {
   return {};
 };
 export default withRouter(connect(mapStateToProps)(Edit));
+
+{
+  /* <div className="content">
+  <p>New Post Title:</p>
+  <form onSubmit={this.submitInfo}>
+    <textarea
+      className="postTitle"
+      type="text"
+      required
+      placeholder="New Title"
+      rows="1"
+      onChange={(event) => this.handleChangeFor("postTitle", event)}
+    />
+    <br />
+    <p>New Post Content:</p>
+    <textarea
+      className="postContent"
+      type="text"
+      required
+      placeholder="Post Content"
+      rows="8"
+      cols="50"
+      onChange={(event) => this.handleChangeFor("postBody", event)}
+    />
+    <br />
+    <br />
+    <button variant="contained" color="primary" size="small" type="submit">
+      Post
+    </button>
+    <button
+      variant="contained"
+      color="secondary"
+      size="small"
+      onClick={this.cancel}
+    >
+      Cancel
+    </button>
+  </form>
+</div>; */
+}

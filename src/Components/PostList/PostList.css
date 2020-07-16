@@ -1,10 +1,11 @@
 .postItem {
   margin: 0%;
   margin-top: 2%;
-  border: solid 1px black;
+  border: solid 1px rgb(255, 255, 255);
   border-radius: 15px;
-  padding-bottom: 5%;
+  /* padding-bottom: 5%; */
   background-color: rgba(238, 250, 255, 0.637);
+  box-shadow: 10px 10px 20px rgb(117, 0, 133);
 }
 
 .postTitle {

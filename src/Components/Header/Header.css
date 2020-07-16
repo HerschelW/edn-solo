@@ -15,11 +15,10 @@
   top: 0;
   background-color: #f2f2f2;
   z-index: 2;
-  border-bottom: 2px solid rgb(121, 121, 121);
 }
 
 .header {
-  background-color: #5c006e;
+  background-color: #41004e;
   text-align: center;
 }
 

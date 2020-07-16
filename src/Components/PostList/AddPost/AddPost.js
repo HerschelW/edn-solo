@@ -42,7 +42,7 @@ class Edit extends Component {
 
   render() {
     return (
-      <div className="content">
+      <div className="content addContent">
         <p>New Post Title:</p>
         <form onSubmit={this.submitInfo}>
           <textarea

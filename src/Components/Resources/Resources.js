@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ResourceItem from "./ResourceItem/ResourceItem";
 import { connect } from "react-redux";
 import "./Resources.css";
+import RightSide from "../Sidebars/RightSibebar";
 
 class Resources extends Component {
   componentDidMount() {
@@ -14,13 +15,16 @@ class Resources extends Component {
 
   render() {
     return (
-      <div className="postList content">
-        <button onClick={this.toNewResource}>Add Resource</button>
-        {this.props.resources.resources.map((resourceItem) => {
-          return (
-            <ResourceItem key={resourceItem.id} resourceItem={resourceItem} />
-          );
-        })}
+      <div className="postList">
+        <RightSide />
+        <div className="content">
+          <button onClick={this.toNewResource}>Add Resource</button>
+          {this.props.resources.resources.map((resourceItem) => {
+            return (
+              <ResourceItem key={resourceItem.id} resourceItem={resourceItem} />
+            );
+          })}
+        </div>
       </div>
     );
   }

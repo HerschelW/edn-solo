@@ -70,12 +70,25 @@ function* updateResource(action) {
   }
 }
 
+function* deleteResource(action) {
+  // wrap it all in try/catch
+  // yield axios
+  // dispatch the result with put!
+  try {
+    Axios.delete(`/api/resources/${action.payload}`);
+  } catch (error) {
+    // console.log('Error fetching Posts', error);
+    alert("unable to delete Resource from server");
+  }
+}
+
 function* resourceSaga() {
   yield takeEvery("FETCH_RESOURCES", fetchResources);
   yield takeEvery("FETCH_RESOURCES_DETAIL", fetchResourcesDetail);
   yield takeEvery("UPDATE_RESOURCE", updateResource);
   yield takeEvery("FETCH_CURRENT_RESOURCE", fetchCurrentResource);
   yield takeEvery("ADD_RESOURCE", addResources);
+  yield takeEvery("DELETE_RESOURCE", deleteResource);
 }
 
 export default resourceSaga;
