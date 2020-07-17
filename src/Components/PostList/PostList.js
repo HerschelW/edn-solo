@@ -3,6 +3,7 @@ import PostItem from "./PostItem/PostItem";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import "./PostList.css";
+import { Box, Button } from "@chakra-ui/core";
 
 class PostList extends Component {
   componentDidMount() {
@@ -15,12 +16,12 @@ class PostList extends Component {
 
   render() {
     return (
-      <div className="postList">
-        <button onClick={this.toNewPost}>Add Post</button>
+      <Box>
+        <Button onClick={this.toNewPost}>Add Post</Button>
         {this.props.posts.posts.map((postItem) => {
           return <PostItem key={postItem.id} postItem={postItem} />;
         })}
-      </div>
+      </Box>
     );
   }
 }

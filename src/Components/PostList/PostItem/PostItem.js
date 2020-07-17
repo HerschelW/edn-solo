@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 
 import { connect } from "react-redux";
+import { Flex, Box, Button, Heading, Text, IconButton } from "@chakra-ui/core";
 
 class PostItem extends Component {
   state = {
@@ -38,37 +39,87 @@ class PostItem extends Component {
   render() {
     if (this.props.user.id === this.props.postItem.user_id) {
       return (
-        <div className="postItem">
-          <h2>{this.props.postItem.post_title}</h2>
-          <p>{this.props.postItem.post_body}</p>
-          <p>{this.props.postItem.likes}</p>
-          <button id={this.props.postItem.id} onClick={this.addPostComment}>
-            Comment
-          </button>
-          <button id={this.props.postItem.id} onClick={this.addPostLike}>
-            Like
-          </button>
-          <button id={this.props.postItem.id} onClick={this.editPost}>
-            Edit
-          </button>
-          <button id={this.props.postItem.id} onClick={this.deletePost}>
-            Delete
-          </button>
-        </div>
+        <Flex width="full" justifyContent="center">
+          <Box
+            m={4}
+            textAlign="center"
+            borderWidth={1}
+            borderRadius="lg"
+            px={4}
+            width="full"
+            maxWidth="100%"
+            textAlign="center"
+            boxShadow="lg"
+            p={4}
+            py={8}
+          >
+            {/* <div className="postItem"> */}
+            <Heading as="h3" size="lg">
+              {this.props.postItem.post_title}
+            </Heading>
+            <Text>{this.props.postItem.post_body}</Text>
+            <Text>{this.props.postItem.likes}</Text>
+            <Button
+              m={1}
+              id={this.props.postItem.id}
+              onClick={this.addPostComment}
+            >
+              Comment
+            </Button>
+            <Button
+              m={1}
+              id={this.props.postItem.id}
+              onClick={this.addPostLike}
+            >
+              Like
+            </Button>
+            <Button m={1} id={this.props.postItem.id} onClick={this.editPost}>
+              Edit
+            </Button>
+            <Button m={1} id={this.props.postItem.id} onClick={this.deletePost}>
+              Delete
+            </Button>
+            {/* </div> */}
+          </Box>
+        </Flex>
       );
     } else {
       return (
-        <div className="postItem">
-          <h2>{this.props.postItem.post_title}</h2>
-          <p>{this.props.postItem.post_body}</p>
-          <p>{this.props.postItem.likes}</p>
-          <button id={this.props.postItem.id} onClick={this.addPostComment}>
-            Comment
-          </button>
-          <button id={this.props.postItem.id} onClick={this.addPostLike}>
-            Like
-          </button>
-        </div>
+        <Flex width="full" justifyContent="center">
+          <Box
+            m={4}
+            textAlign="center"
+            borderWidth={1}
+            borderRadius="lg"
+            px={4}
+            width="full"
+            maxWidth="100%"
+            textAlign="center"
+            boxShadow="lg"
+            p={4}
+            py={8}
+          >
+            <Heading as="h3" size="lg">
+              {this.props.postItem.post_title}
+            </Heading>
+            <Text>{this.props.postItem.post_body}</Text>
+            <p>{this.props.postItem.likes}</p>
+            <Button
+              m={1}
+              id={this.props.postItem.id}
+              onClick={this.addPostComment}
+            >
+              Comment
+            </Button>
+            <Button
+              m={1}
+              id={this.props.postItem.id}
+              onClick={this.addPostLike}
+            >
+              Like
+            </Button>
+          </Box>
+        </Flex>
       );
     }
   }

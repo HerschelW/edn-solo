@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PostItem from "../PostList/PostItem/PostItem";
+import { Link, Heading, Button } from "@chakra-ui/core";
+import { VARIANT_COLOR } from "../ThemSelector/ThemeSelector";
 
 class Profile extends Component {
   state = {};
@@ -34,14 +36,18 @@ class Profile extends Component {
     const { user, profile, profileData, profileLinks } = this.props;
     return (
       <div className="content">
-        <h1 className="profile">
+        <Heading className="profile">
           {user.first_name} {user.last_name}
-        </h1>
-        <button onClick={this.editProfile} Edit Profile></button>
+        </Heading>
+        <Button variantColor={VARIANT_COLOR} mb={4} onClick={this.editProfile}>
+          Edit Profile
+        </Button>
         <p className="profile">{profileData.bio}</p>
         {profileLinks.map((profileLink) => {
           return (
-            <a href={profileLink.profile_url}>{profileLink.platform_name}</a>
+            <Link role="link" href={profileLink.profile_url} isExternal>
+              {profileLink.platform_name}
+            </Link>
           );
         })}
         {profile.profilePosts.map((postItem) => {

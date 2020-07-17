@@ -3,6 +3,7 @@ import ResourceItem from "./ResourceItem/ResourceItem";
 import { connect } from "react-redux";
 import "./Resources.css";
 import RightSide from "../Sidebars/RightSibebar";
+import { Box, Button, IconButton } from "@chakra-ui/core";
 
 class Resources extends Component {
   componentDidMount() {
@@ -15,16 +16,16 @@ class Resources extends Component {
 
   render() {
     return (
-      <div className="postList">
+      <div className="content">
         <RightSide />
-        <div className="content">
-          <button onClick={this.toNewResource}>Add Resource</button>
+        <Box>
+          <Button onClick={this.toNewResource}>Add Resource</Button>
           {this.props.resources.resources.map((resourceItem) => {
             return (
               <ResourceItem key={resourceItem.id} resourceItem={resourceItem} />
             );
           })}
-        </div>
+        </Box>
       </div>
     );
   }
