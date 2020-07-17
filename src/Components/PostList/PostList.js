@@ -3,7 +3,6 @@ import PostItem from "./PostItem/PostItem";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import "./PostList.css";
-import AddPost from "./AddPost/AddPost";
 
 class PostList extends Component {
   componentDidMount() {

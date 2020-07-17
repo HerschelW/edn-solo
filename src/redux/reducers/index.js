@@ -5,6 +5,7 @@ import user from "./userReducer";
 import posts from "./postsReducer";
 import resources from "./resourcesReducer";
 import members from "./membersReducer";
+import profile from "./profileReducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   members,
   posts, // contains all post reducers
   resources,
+  profile,
 });
 
 export default rootReducer;

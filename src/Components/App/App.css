@@ -78,3 +78,8 @@ button:hover {
   background-color: rgb(68, 32, 78);
   color: white;
 }
+
+.profile {
+  color: white;
+  margin-bottom: 5%;
+}
