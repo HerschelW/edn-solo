@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import {
+  Box,
+  Flex,
+  Text,
+  Textarea,
+  Input,
+  FormControl,
+  FormLabel,
+  Button,
+} from "@chakra-ui/core";
+import { PRIMARY_COLOR, VARIANT_COLOR } from "../../ThemSelector/ThemeSelector";
 
 class Edit extends Component {
   // The edit component allows the user to change the title and or description of a movie.
@@ -41,48 +52,60 @@ class Edit extends Component {
 
   render() {
     return (
-      <div className="content addContent">
-        <p>New Post Title:</p>
-        <form onSubmit={this.submitInfo}>
-          <textarea
-            className="postTitle"
-            type="text"
-            required
-            placeholder="New Title"
-            rows="1"
-            onChange={(event) => this.handleChangeFor("postTitle", event)}
-          />
-          <br />
-          <p>New Post Content:</p>
-          <textarea
-            className="postContent"
-            type="text"
-            required
-            placeholder="Post Content"
-            rows="8"
-            cols="50"
-            onChange={(event) => this.handleChangeFor("postBody", event)}
-          />
-          <br />
-          <br />
-          <button
-            variant="contained"
-            color="primary"
-            size="small"
-            type="submit"
-          >
-            Post
-          </button>
-          <button
-            variant="contained"
-            color="secondary"
-            size="small"
-            onClick={this.cancel}
-          >
-            Cancel
-          </button>
-        </form>
-      </div>
+      <Flex
+        mt={10}
+        minHeight="100vh"
+        width="full"
+        align="center"
+        justifyContent="center"
+      >
+        <Box
+          textAlign="center"
+          borderWidth={1}
+          borderRadius="lg"
+          px={4}
+          width="full"
+          maxWidth="40%"
+          boxShadow="lg"
+          p={4}
+          py={8}
+        >
+          <form onSubmit={this.submitInfo}>
+            <FormControl textAlign="left">
+              <FormLabel>New Post Title:</FormLabel>
+              <Input
+                type="text"
+                required
+                placeholder="New Title"
+                onChange={(event) => this.handleChangeFor("postTitle", event)}
+              />
+              <br />
+              <FormLabel>New Post Content:</FormLabel>
+              <Textarea
+                type="text"
+                required
+                placeholder="Post Content"
+                rows="8"
+                cols="50"
+                onChange={(event) => this.handleChangeFor("postBody", event)}
+              />
+              <br />
+              <br />
+              <Button variantColor={PRIMARY_COLOR} size="small" type="submit">
+                Post
+              </Button>
+              <button
+                variant="contained"
+                color="secondary"
+                size="small"
+                onClick={this.cancel}
+              >
+                Cancel
+              </button>
+            </FormControl>
+          </form>
+        </Box>
+      </Flex>
     );
   }
 }

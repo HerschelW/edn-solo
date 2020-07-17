@@ -10,7 +10,7 @@ import {
   Text,
   Input,
 } from "@chakra-ui/core";
-import { VARIANT_COLOR } from "../ThemSelector/ThemeSelector";
+import RegisterToast from "./RegisterButton/RegisterButton";
 
 class Register extends Component {
   state = {
@@ -127,17 +127,7 @@ class Register extends Component {
                 </label>
               </div>
               <div>
-                <Button
-                  variantColor={VARIANT_COLOR}
-                  width="full"
-                  mt={4}
-                  className="register btn"
-                  type="submit"
-                  name="submit"
-                  value="Register"
-                >
-                  Register
-                </Button>
+                <RegisterToast />
               </div>
             </FormControl>
           </form>

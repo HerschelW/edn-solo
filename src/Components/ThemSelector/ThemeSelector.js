@@ -3,6 +3,7 @@ import React from "react";
 const { useColorMode, Box, IconButton } = require("@chakra-ui/core");
 
 export const VARIANT_COLOR = "teal";
+export const PRIMARY_COLOR = "#44204E";
 
 const ThemeSelector = () => {
   const { colorMode, toggleColorMode } = useColorMode();
