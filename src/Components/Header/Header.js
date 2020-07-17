@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Header.css";
+import ThemeSelector from "../ThemSelector/ThemeSelector";
 
 const Nav = (props) => (
   <div className="nav">
@@ -10,6 +11,9 @@ const Nav = (props) => (
       <Link to="/home">
         <h1 className="nav-title">Emerging Digital Network</h1>
       </Link>
+      <div className="nav-right">
+        <ThemeSelector />
+      </div>
     </div>
     <div className="navbar">
       <div className="nav-left">

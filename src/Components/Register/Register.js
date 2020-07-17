@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {
+  Flex,
+  Box,
+  Heading,
+  FormControl,
+  Button,
+  FormLabel,
+  Text,
+  Input,
+} from "@chakra-ui/core";
+import { VARIANT_COLOR } from "../ThemSelector/ThemeSelector";
 
 class Register extends Component {
   state = {
@@ -40,78 +51,110 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="content input-form">
-        {this.props.errors.registrationMessage && (
-          <h2 className="alert" role="alert">
-            {this.props.errors.registrationMessage}
-          </h2>
-        )}
-        <form onSubmit={this.registerUser}>
-          <h1>Register New Account</h1>
-          <div>
-            <label htmlFor="firstName">
-              <input
-                type="text"
-                name="firstName"
-                value={this.state.firstName}
-                placeholder="First Name"
-                onChange={this.handleInputChangeFor("firstName")}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="lastName">
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={this.state.lastName}
-                onChange={this.handleInputChangeFor("lastName")}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="email">
-              <input
-                type="text"
-                name="email"
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.handleInputChangeFor("email")}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor("password")}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              className="register btn"
-              type="submit"
-              name="submit"
-              value="Register"
-            />
-          </div>
-        </form>
-        <p>or</p>
-        <button
-          type="button"
-          className="link-button btn"
-          onClick={() => {
-            this.props.dispatch({ type: "SET_TO_LOGIN_MODE" });
-          }}
+      <Flex
+        mt={10}
+        minHeight="100vh"
+        width="full"
+        align="center"
+        justifyContent="center"
+      >
+        <Box
+          textAlign="center"
+          borderWidth={1}
+          borderRadius="lg"
+          px={4}
+          width="full"
+          maxWidth="30%"
+          textAlign="center"
+          boxShadow="lg"
+          p={4}
+          py={8}
         >
-          Login
-        </button>
-      </div>
+          {this.props.errors.registrationMessage && (
+            <h2 className="alert" role="alert">
+              {this.props.errors.registrationMessage}
+            </h2>
+          )}
+          <form onSubmit={this.registerUser}>
+            <Heading py={4}>Register Account</Heading>
+            <FormControl textAlign="left">
+              <div>
+                <FormLabel>First Name</FormLabel>
+                <label htmlFor="firstName">
+                  <Input
+                    type="text"
+                    name="firstName"
+                    value={this.state.firstName}
+                    placeholder="First Name"
+                    onChange={this.handleInputChangeFor("firstName")}
+                  />
+                </label>
+              </div>
+              <div>
+                <FormLabel mt={4}>Last Name</FormLabel>
+                <label htmlFor="lastName">
+                  <Input
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value={this.state.lastName}
+                    onChange={this.handleInputChangeFor("lastName")}
+                  />
+                </label>
+              </div>
+              <div>
+                <FormLabel mt={4}>Email Address</FormLabel>
+                <label htmlFor="email">
+                  <Input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={this.handleInputChangeFor("email")}
+                  />
+                </label>
+              </div>
+              <div>
+                <FormLabel mt={4}>Password</FormLabel>
+                <label htmlFor="password">
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.handleInputChangeFor("password")}
+                  />
+                </label>
+              </div>
+              <div>
+                <Button
+                  variantColor={VARIANT_COLOR}
+                  width="full"
+                  mt={4}
+                  className="register btn"
+                  type="submit"
+                  name="submit"
+                  value="Register"
+                >
+                  Register
+                </Button>
+              </div>
+            </FormControl>
+          </form>
+          <Text>or</Text>
+          <Button
+            width="full"
+            mt={4}
+            type="button"
+            className="link-button btn"
+            onClick={() => {
+              this.props.dispatch({ type: "SET_TO_LOGIN_MODE" });
+            }}
+          >
+            Login
+          </Button>
+        </Box>
+      </Flex>
     );
   }
 }

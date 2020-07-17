@@ -31,13 +31,19 @@ class Profile extends Component {
   };
 
   render() {
-    const { user, profile, profileData } = this.props;
+    const { user, profile, profileData, profileLinks } = this.props;
     return (
       <div className="content">
         <h1 className="profile">
           {user.first_name} {user.last_name}
         </h1>
+        <button onClick={this.editProfile} Edit Profile></button>
         <p className="profile">{profileData.bio}</p>
+        {profileLinks.map((profileLink) => {
+          return (
+            <a href={profileLink.profile_url}>{profileLink.platform_name}</a>
+          );
+        })}
         {profile.profilePosts.map((postItem) => {
           return <PostItem key={postItem.id} postItem={postItem} />;
         })}
@@ -50,6 +56,7 @@ const mapStateToProps = (state) => ({
   user: state.user,
   profile: state.profile,
   profileData: state.profile.profile[0],
+  profileLinks: state.profile.profileLinks,
 });
 
 export default withRouter(connect(mapStateToProps)(Profile));

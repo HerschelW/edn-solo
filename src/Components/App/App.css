@@ -60,7 +60,7 @@ input {
 .input-form {
   padding: 10% 0;
   width: 30%;
-  background-color: #fbf8ff;
+  background-color: #715299;
   border: solid 1px black;
   border-radius: 5%;
 }
@@ -82,4 +82,8 @@ button:hover {
 .profile {
   color: white;
   margin-bottom: 5%;
+}
+
+.chakraLink {
+  color: teal !important;
 }

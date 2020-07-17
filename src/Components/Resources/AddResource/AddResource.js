@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { TextField, Button } from "@material-ui/core";
 
 class Edit extends Component {
   // The edit component allows the user to change the title and or description of a movie.
