@@ -17,6 +17,10 @@ import Profile from "../Profile/Profile";
 
 import { connect } from "react-redux";
 
+// // Chakra UI
+// import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+// import theme from "./chakra";
+
 import "./App.css";
 
 class App extends Component {
