@@ -5,10 +5,6 @@ import { connect } from "react-redux";
 import { Flex, Box, Button, Heading, Text, IconButton } from "@chakra-ui/core";
 
 class PostItem extends Component {
-  state = {
-    postID: this.props.postItem.id,
-  };
-
   // addPostComment = () => {
   //   //
   // };
@@ -54,8 +50,11 @@ class PostItem extends Component {
             py={8}
           >
             {/* <div className="postItem"> */}
-            <Heading as="h3" size="lg">
+            <Heading as="h3" size="lg" mb={2}>
               {this.props.postItem.post_title}
+            </Heading>
+            <Heading as="h5" size="sm">
+              {this.props.member}
             </Heading>
             <Text>{this.props.postItem.post_body}</Text>
             <Text>{this.props.postItem.likes}</Text>
@@ -79,7 +78,6 @@ class PostItem extends Component {
             <Button m={1} id={this.props.postItem.id} onClick={this.deletePost}>
               Delete
             </Button>
-            {/* </div> */}
           </Box>
         </Flex>
       );
@@ -127,6 +125,7 @@ class PostItem extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  members: state.members,
 });
 
 export default withRouter(connect(mapStateToProps)(PostItem));

@@ -11,7 +11,7 @@ const members = (state = [], action) => {
 
 const setMember = (state = {}, action) => {
   switch (action.type) {
-    case "SET_ALL_USERS":
+    case "#####":
       return action.payload;
     default:
       return state;

@@ -65,7 +65,6 @@ class Register extends Component {
           px={4}
           width="full"
           maxWidth="30%"
-          textAlign="center"
           boxShadow="lg"
           p={4}
           py={8}

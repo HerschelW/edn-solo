@@ -80,6 +80,17 @@ function* updatePost(action) {
   }
 }
 
+function* fetchPostAuthor(action) {
+  try {
+    const response = Axios.get(`/api/members/${action.payload}`);
+    console.log(response.data);
+
+    yield put({ type: "SET_POST_AUTHOR", payload: response.data });
+  } catch (error) {
+    // alert("Unable to get post author on server", error);
+  }
+}
+
 function* postsSaga() {
   yield takeEvery("FETCH_POSTS", fetchPosts);
   yield takeEvery("FETCH_POST_DETAIL", fetchPostDetail);
@@ -87,6 +98,7 @@ function* postsSaga() {
   yield takeEvery("FETCH_CURRENT_POST", fetchCurrentPost);
   yield takeEvery("ADD_POST", addPost);
   yield takeEvery("DELETE_POST", deletePost);
+  yield takeEvery("FETCH_POST_AUTHOR", fetchPostAuthor);
 }
 
 export default postsSaga;
