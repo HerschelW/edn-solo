@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { Link } from "@chakra-ui/core";
 import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Header.css";

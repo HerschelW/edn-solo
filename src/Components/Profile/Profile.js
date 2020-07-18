@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PostItem from "../PostList/PostItem/PostItem";
-import { Link, Heading, Button } from "@chakra-ui/core";
+import { Link, Heading, Button, Icon } from "@chakra-ui/core";
 import { VARIANT_COLOR } from "../ThemSelector/ThemeSelector";
+import ProfileLink from "./ProfileLink/ProfileLink";
 
 class Profile extends Component {
   state = {};
@@ -44,11 +45,7 @@ class Profile extends Component {
         </Button>
         <p className="profile">{profileData.bio}</p>
         {profileLinks.map((profileLink) => {
-          return (
-            <Link role="link" href={profileLink.profile_url} isExternal>
-              {profileLink.platform_name}
-            </Link>
-          );
+          return <ProfileLink key={profileLink.id} profileLink={profileLink} />;
         })}
         {profile.profilePosts.map((postItem) => {
           return <PostItem key={postItem.id} postItem={postItem} />;

@@ -10,6 +10,7 @@ import {
   FormControl,
   FormLabel,
   Button,
+  Heading,
 } from "@chakra-ui/core";
 import { PRIMARY_COLOR, VARIANT_COLOR } from "../../ThemSelector/ThemeSelector";
 
@@ -70,6 +71,9 @@ class Edit extends Component {
           p={4}
           py={8}
         >
+          <Heading as="h3" size="lg" py={4}>
+            New Post
+          </Heading>
           <form onSubmit={this.submitInfo}>
             <FormControl textAlign="left">
               <FormLabel>New Post Title:</FormLabel>
@@ -80,28 +84,21 @@ class Edit extends Component {
                 onChange={(event) => this.handleChangeFor("postTitle", event)}
               />
               <br />
-              <FormLabel>New Post Content:</FormLabel>
+              <FormLabel m1={4}>New Post Content:</FormLabel>
               <Textarea
                 type="text"
                 required
                 placeholder="Post Content"
-                rows="8"
-                cols="50"
                 onChange={(event) => this.handleChangeFor("postBody", event)}
               />
               <br />
               <br />
-              <Button variantColor={PRIMARY_COLOR} size="small" type="submit">
+              <Button m={1} variantColor={PRIMARY_COLOR} type="submit">
                 Post
               </Button>
-              <button
-                variant="contained"
-                color="secondary"
-                size="small"
-                onClick={this.cancel}
-              >
+              <Button m={1} onClick={this.cancel} variantColor="red">
                 Cancel
-              </button>
+              </Button>
             </FormControl>
           </form>
         </Box>
