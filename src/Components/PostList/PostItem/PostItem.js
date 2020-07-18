@@ -54,7 +54,7 @@ class PostItem extends Component {
               {this.props.postItem.post_title}
             </Heading>
             <Heading as="h5" size="sm">
-              {this.props.member}
+              {this.props.postItem.first_name}
             </Heading>
             <Text>{this.props.postItem.post_body}</Text>
             <Text>{this.props.postItem.likes}</Text>
@@ -99,6 +99,10 @@ class PostItem extends Component {
           >
             <Heading as="h3" size="lg">
               {this.props.postItem.post_title}
+            </Heading>
+            <Text>By</Text>
+            <Heading mb={2} as="h5" size="sm">
+              {this.props.postItem.first_name}
             </Heading>
             <Text>{this.props.postItem.post_body}</Text>
             <p>{this.props.postItem.likes}</p>

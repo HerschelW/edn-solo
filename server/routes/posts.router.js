@@ -12,7 +12,7 @@ const {
  */
 router.get("/", (req, res) => {
   console.log("getting posts");
-  const queryText = `SELECT first_name, last_name, email, posts.id, posts.post_title, posts.post_body, posts.likes FROM users
+  const queryText = `SELECT first_name, last_name, email, posts.id, posts.post_title, posts.post_body, posts.likes, posts.user_id FROM users
   JOIN posts ON posts.user_id = users.id
   ORDER BY posts.id DESC`;
   pool
