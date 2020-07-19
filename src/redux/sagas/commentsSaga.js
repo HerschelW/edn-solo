@@ -1,4 +1,4 @@
-import { takeEvery } from "redux-saga/effects";
+import { takeEvery, put } from "redux-saga/effects";
 
 const { default: Axios } = require("axios");
 
@@ -28,9 +28,20 @@ function* addResourceComment(action) {
   }
 }
 
+function* fetchPostComments(action) {
+  try {
+    const response = yield Axios.get(`api/posts/comments/${action.payload}`);
+
+    yield put({ type: "SET_POST_COMMENTS", payload: response.data });
+  } catch (error) {
+    alert("Unable to get comments from server", error);
+  }
+}
+
 function* commentsSaga() {
   yield takeEvery("SUBMIT_POST_COMMENT", addPostComment);
   yield takeEvery("SUBMIT_RESOURCE_COMMENT", addResourceComment);
+  yield takeEvery("FETCH_POST_COMMENTS", fetchPostComments);
 }
 
 export default commentsSaga;

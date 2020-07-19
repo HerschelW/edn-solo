@@ -18,8 +18,10 @@ class PostList extends Component {
     return (
       <Box>
         <Button onClick={this.toNewPost}>Add Post</Button>
-        {this.props.posts.posts.map((postItem) => {
-          return <PostItem key={postItem.id} postItem={postItem} />;
+        {this.props.posts.posts.map((postItem, index) => {
+          return (
+            <PostItem key={postItem.id} postItem={postItem} postIndex={index} />
+          );
         })}
       </Box>
     );

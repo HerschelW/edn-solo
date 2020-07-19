@@ -7,6 +7,8 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
+// JOIN post_comments ON post_comments.post_id = posts.id
+
 /**
  * Get all of the posts on the table
  */
@@ -95,6 +97,23 @@ router.post("/comments", rejectUnauthenticated, (req, res) => {
     .query(queryText, [user, body, post])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
+});
+
+router.get("/comments/:id", (req, res) => {
+  console.log("getting post comments", req.params);
+  const postID = req.params.id;
+  const queryText = `SELECT post_comments.id, post_comments.user_id, post_comments.body, post_comments.post_id, users.id, users.first_name FROM post_comments
+  JOIN users ON users.id = post_comments.user_id
+  WHERE post_id = $1 ORDER BY post_comments.id`;
+  pool
+    .query(queryText, [postID])
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((error) => {
+      console.log("Error making SELECT in posts router 102", error);
+      res.sendStatus(500);
+    });
 });
 
 /**

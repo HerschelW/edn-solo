@@ -52,6 +52,7 @@ class App extends Component {
                 <ProtectedRoute exact path="/resources" component={Resources} />
                 <ProtectedRoute exact path="/add-post" component={AddPost} />
                 <ProtectedRoute exact path="/profile" component={Profile} />
+
                 <ProtectedRoute
                   exact
                   path="/add-resource"
