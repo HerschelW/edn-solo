@@ -4,7 +4,6 @@ import { withRouter } from "react-router";
 import {
   Box,
   Flex,
-  Text,
   Textarea,
   Input,
   FormControl,
@@ -12,7 +11,7 @@ import {
   Button,
   Heading,
 } from "@chakra-ui/core";
-import { PRIMARY_COLOR, VARIANT_COLOR } from "../../ThemSelector/ThemeSelector";
+import { PRIMARY_COLOR } from "../../ThemeSelector/ThemeSelector";
 
 class Edit extends Component {
   // The edit component allows the user to change the title and or description of a movie.

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PostItem from "../PostList/PostItem/PostItem";
 import { Link, Heading, Button, Icon } from "@chakra-ui/core";
-import { VARIANT_COLOR } from "../ThemSelector/ThemeSelector";
+import { VARIANT_COLOR } from "../ThemeSelector/ThemeSelector";
 import ProfileLink from "./ProfileLink/ProfileLink";
 
 class Profile extends Component {

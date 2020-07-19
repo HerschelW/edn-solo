@@ -35,7 +35,7 @@ function* deletePost(action) {
   // yield axios
   // dispatch the result with put!
   try {
-    Axios.delete(`/api/posts/${action.payload}`);
+    yield Axios.delete(`/api/posts/${action.payload}`);
   } catch (error) {
     // console.log('Error fetching Posts', error);
     alert("unable to delete Post from server");

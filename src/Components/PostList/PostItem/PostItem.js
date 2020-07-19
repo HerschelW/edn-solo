@@ -3,11 +3,12 @@ import { withRouter } from "react-router";
 
 import { connect } from "react-redux";
 import { Flex, Box, Button, Heading, Text, IconButton } from "@chakra-ui/core";
+import AddComment from "../../Comment/AddComment";
 
 class PostItem extends Component {
-  // addPostComment = () => {
-  //   //
-  // };
+  state = {
+    postID: this.props.postItem.id,
+  };
 
   // addPostLike = () => {
   //   //
@@ -44,7 +45,6 @@ class PostItem extends Component {
             px={4}
             width="full"
             maxWidth="100%"
-            textAlign="center"
             boxShadow="lg"
             p={4}
             py={8}
@@ -53,18 +53,13 @@ class PostItem extends Component {
             <Heading as="h3" size="lg" mb={2}>
               {this.props.postItem.post_title}
             </Heading>
-            <Heading as="h5" size="sm">
+            <Text>By</Text>
+            <Heading mb={2} as="h5" size="sm">
               {this.props.postItem.first_name}
             </Heading>
-            <Text>{this.props.postItem.post_body}</Text>
-            <Text>{this.props.postItem.likes}</Text>
-            <Button
-              m={1}
-              id={this.props.postItem.id}
-              onClick={this.addPostComment}
-            >
-              Comment
-            </Button>
+            <Text mb={8}>{this.props.postItem.post_body}</Text>
+            <Text>{this.props.postItem.likes} Likes</Text>
+
             <Button
               m={1}
               id={this.props.postItem.id}
@@ -78,6 +73,10 @@ class PostItem extends Component {
             <Button m={1} id={this.props.postItem.id} onClick={this.deletePost}>
               Delete
             </Button>
+            <AddComment
+              postItem={this.props.postItem}
+              userID={this.props.user.id}
+            />
           </Box>
         </Flex>
       );
@@ -92,7 +91,6 @@ class PostItem extends Component {
             px={4}
             width="full"
             maxWidth="100%"
-            textAlign="center"
             boxShadow="lg"
             p={4}
             py={8}
@@ -109,17 +107,14 @@ class PostItem extends Component {
             <Button
               m={1}
               id={this.props.postItem.id}
-              onClick={this.addPostComment}
-            >
-              Comment
-            </Button>
-            <Button
-              m={1}
-              id={this.props.postItem.id}
               onClick={this.addPostLike}
             >
               Like
             </Button>
+            <AddComment
+              postItem={this.props.postItem}
+              userID={this.props.user.id}
+            />
           </Box>
         </Flex>
       );
@@ -129,7 +124,6 @@ class PostItem extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  members: state.members,
 });
 
 export default withRouter(connect(mapStateToProps)(PostItem));

@@ -75,6 +75,22 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
     .catch((error) => console.log(error));
 });
 
+router.post("/comments", rejectUnauthenticated, (req, res) => {
+  console.log("Adding post comment to the database");
+  console.log(req);
+
+  const resource = req.body.id;
+  const body = req.body.body;
+  const user = req.user.id;
+  const queryText = `
+    INSERT INTO resource_comments (user_id, resource_id, body)
+    VALUES ($1, $2, $3)`;
+  pool
+    .query(queryText, [user, resource, body])
+    .then(() => res.sendStatus(201))
+    .catch(() => res.sendStatus(500));
+});
+
 /**
  * Return all users along with the total number of posts
  * they have added to the table

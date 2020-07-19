@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 
 import { connect } from "react-redux";
 import { Flex, Box, Button, Text, Heading } from "@chakra-ui/core";
+import AddComment from "../../Comment/AddComment";
 
 // class ResourceItem extends Component {
 //   render() {
@@ -103,6 +104,10 @@ class ResourceItem extends Component {
             >
               Delete
             </Button>
+            <AddComment
+              postItem={this.props.resourceItem}
+              userID={this.props.user.id}
+            />
           </Box>
         </Flex>
       );

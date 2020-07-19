@@ -13,7 +13,7 @@ import {
   Checkbox,
 } from "@chakra-ui/core";
 import { Link } from "react-router-dom";
-import { VARIANT_COLOR } from "../ThemSelector/ThemeSelector";
+import { VARIANT_COLOR } from "../ThemeSelector/ThemeSelector";
 
 class Login extends Component {
   state = {

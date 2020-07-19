@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, useToast } from "@chakra-ui/core";
-import { VARIANT_COLOR } from "../../ThemSelector/ThemeSelector";
+import { VARIANT_COLOR } from "../../ThemeSelector/ThemeSelector";
 
 function RegisterToast() {
   const toast = useToast();

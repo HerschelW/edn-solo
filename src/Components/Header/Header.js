@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { Link } from "@chakra-ui/core";
 import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Header.css";
-import ThemeSelector from "../ThemSelector/ThemeSelector";
+import ThemeSelector from "../ThemeSelector/ThemeSelector";
+import { Heading } from "@chakra-ui/core";
 
 const Nav = (props) => (
   <div className="nav">
     <div className="header">
       <Link to="/home">
-        <h1 className="nav-title">Emerging Digital Network</h1>
+        <Heading className="nav-title">Emerging Digital Network</Heading>
       </Link>
       <div className="nav-right">
         <ThemeSelector />
