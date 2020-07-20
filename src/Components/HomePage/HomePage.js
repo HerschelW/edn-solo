@@ -8,7 +8,6 @@ const HomePage = (props) => (
     <div className="content">
       <PostList />
     </div>
-    <RightSide />
   </div>
 );
 

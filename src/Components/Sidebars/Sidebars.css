@@ -3,20 +3,19 @@
   height: 100%;
   width: 15%;
   position: fixed;
-  z-index: 1;
+  z-index: -1;
   top: 0;
   right: 0;
-  background-color: rgba(0, 73, 24, 0.267);
-  border: solid 1px rgb(255, 255, 255);
+  background-color: rgba(95, 95, 95, 0.158);
+  border-left: solid 1px rgb(255, 255, 255);
   padding-top: 8%;
-  box-shadow: 1px 1px 100px -50px rgb(255, 255, 255);
-  color: white;
+  box-shadow: 1px 1px 100px -50px rgb(0, 0, 0);
 }
 
 td {
   font-size: 0.85rem;
   width: 50%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.212);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.212);
 }
 
 .memberItem {

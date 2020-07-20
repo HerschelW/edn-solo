@@ -4,44 +4,49 @@ import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Header.css";
 import ThemeSelector from "../ThemeSelector/ThemeSelector";
+import { Box } from "@chakra-ui/core";
+import RightSibebar from "../Sidebars/RightSibebar";
 
 const Nav = (props) => (
-  <div className="nav">
-    <div className="header">
-      <Link to="/home">
-        <h1 className="nav-title">Emerging Digital Network</h1>
-      </Link>
-      <div className="nav-right">
-        <ThemeSelector />
+  <Box boxShadow="lg">
+    <div className="nav">
+      <div className="header">
+        <Link to="/home">
+          <h1 className="nav-title">Emerging Digital Network</h1>
+        </Link>
+        <div className="nav-right">
+          <ThemeSelector />
+        </div>
       </div>
-    </div>
-    <div className="navbar">
-      <div className="nav-left">
-        <Link className="nav-link" to="/home">
-          {/* Show this link if they are logged in or not,
+      <div className="navbar">
+        <div className="nav-left">
+          <Link className="nav-link" to="/home">
+            {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-          {props.user.id ? "Home" : "Login / Register"}
-        </Link>
+            {props.user.id ? "Home" : "Login / Register"}
+          </Link>
+        </div>
+        {/* Show the link to the info page and the logout button if the user is logged in */}
+        {props.user.id && (
+          <>
+            <div className="nav-left">
+              <Link className="nav-link" to="/resources">
+                Resources
+              </Link>
+            </div>
+            <div className="nav-right">
+              <Link className="nav-link" to="/profile">
+                Profile
+              </Link>
+              <LogOutButton className="nav-link" />
+            </div>
+            <RightSibebar />
+          </>
+        )}
       </div>
-      {/* Show the link to the info page and the logout button if the user is logged in */}
-      {props.user.id && (
-        <>
-          <div className="nav-left">
-            <Link className="nav-link" to="/resources">
-              Resources
-            </Link>
-          </div>
-          <div className="nav-right">
-            <Link className="nav-link" to="/profile">
-              Profile
-            </Link>
-            <LogOutButton className="nav-link" />
-          </div>
-        </>
-      )}
     </div>
-  </div>
+  </Box>
 );
 
 // Instead of taking everything from state, we just want the user

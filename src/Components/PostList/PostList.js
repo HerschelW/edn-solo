@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import "./PostList.css";
 import { Box, Button } from "@chakra-ui/core";
+import { VARIANT_COLOR } from "../ThemeSelector/ThemeSelector";
 
 class PostList extends Component {
   componentDidMount() {
@@ -17,7 +18,9 @@ class PostList extends Component {
   render() {
     return (
       <Box>
-        <Button onClick={this.toNewPost}>Add Post</Button>
+        <Button variantColor={VARIANT_COLOR} onClick={this.toNewPost}>
+          Add Post
+        </Button>
         {this.props.posts.posts.map((postItem, index) => {
           return (
             <PostItem key={postItem.id} postItem={postItem} postIndex={index} />

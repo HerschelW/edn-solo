@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import "./Resources.css";
 import RightSide from "../Sidebars/RightSibebar";
 import { Box, Button, IconButton, Flex, Stack } from "@chakra-ui/core";
+import { VARIANT_COLOR } from "../ThemeSelector/ThemeSelector";
 
 class Resources extends Component {
   componentDidMount() {
@@ -19,7 +20,12 @@ class Resources extends Component {
       <div>
         <Flex mt="10%">
           <Stack alignItems="center">
-            <Button width="10%" onClick={this.toNewResource} textAlign="center">
+            <Button
+              variantColor={VARIANT_COLOR}
+              width="10%"
+              onClick={this.toNewResource}
+              textAlign="center"
+            >
               Add Resource
             </Button>
             <Stack>

@@ -14,6 +14,7 @@ import Header from "../Header/Header";
 import AddPost from "../PostList/AddPost/AddPost";
 import AddResource from "../Resources/AddResource/AddResource";
 import Profile from "../Profile/Profile";
+import Frame from "../Frame/Frame";
 
 import { connect } from "react-redux";
 
@@ -39,6 +40,7 @@ class App extends Component {
         <ColorModeProvider>
           <CSSReset />
           <Router>
+            <Frame />
             <Header />
             <div>
               <Switch>

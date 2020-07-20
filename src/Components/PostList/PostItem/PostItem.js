@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/core";
 import AddComment from "../../Comment/AddComment";
 import Axios from "axios";
+import { PRIMARY_COLOR } from "../../ThemeSelector/ThemeSelector";
 
 class PostItem extends Component {
   state = {
@@ -143,16 +144,27 @@ class PostItem extends Component {
               </Text>
             </Stack>
             <Button
+              variantColor={PRIMARY_COLOR}
               m={1}
               id={this.props.postItem.id}
               onClick={this.addPostLike}
             >
               Like
             </Button>
-            <Button m={1} id={this.props.postItem.id} onClick={this.editPost}>
+            <Button
+              variantColor={PRIMARY_COLOR}
+              m={1}
+              id={this.props.postItem.id}
+              onClick={this.editPost}
+            >
               Edit
             </Button>
-            <Button m={1} id={this.props.postItem.id} onClick={this.deletePost}>
+            <Button
+              variantColor={PRIMARY_COLOR}
+              m={1}
+              id={this.props.postItem.id}
+              onClick={this.deletePost}
+            >
               Delete
             </Button>
             <br />
@@ -234,6 +246,7 @@ class PostItem extends Component {
               </Text>
             </Stack>
             <Button
+              variantColor={PRIMARY_COLOR}
               m={1}
               id={this.props.postItem.id}
               onClick={this.addPostLike}

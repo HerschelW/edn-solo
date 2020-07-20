@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import Members from "./Members/Members";
 import "./Sidebars.css";
+import { Heading } from "@chakra-ui/core";
 
 class RightSideBar extends Component {
   render() {
@@ -10,7 +11,9 @@ class RightSideBar extends Component {
       <div className="rightSide">
         <table>
           <thead>
-            <h2>Network</h2>
+            <Heading as="h3" size="md">
+              Network
+            </Heading>
           </thead>
           <tbody>
             {this.props.members.members.map((member) => {

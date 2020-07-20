@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Flex, Box, Button, Text, Heading, Link } from "@chakra-ui/core";
 import AddComment from "../../Comment/AddComment";
 import Axios from "axios";
+import { PRIMARY_COLOR } from "../../ThemeSelector/ThemeSelector";
 
 class ResourceItem extends Component {
   state = {
@@ -132,6 +133,7 @@ class ResourceItem extends Component {
               {this.state.comments.comments.length} {commentOrcomments()}
             </Text>
             <Button
+              variantColor={PRIMARY_COLOR}
               m={1}
               id={this.props.resourceItem.id}
               onClick={this.addResourceLike}
@@ -139,6 +141,7 @@ class ResourceItem extends Component {
               Like
             </Button>
             <Button
+              variantColor={PRIMARY_COLOR}
               m={1}
               id={this.props.resourceItem.id}
               onClick={this.editResource}
@@ -146,6 +149,7 @@ class ResourceItem extends Component {
               Edit
             </Button>
             <Button
+              variantColor={PRIMARY_COLOR}
               m={1}
               id={this.props.resourceItem.id}
               onClick={this.deleteResource}
@@ -220,6 +224,7 @@ class ResourceItem extends Component {
             <Text>{this.props.resourceItem.upvote_count} upvotes</Text>
             <Text>{this.state.comments.comments.length} Comments</Text>
             <Button
+              variantColor={PRIMARY_COLOR}
               m={1}
               id={this.props.resourceItem.id}
               onClick={this.addResourceLike}

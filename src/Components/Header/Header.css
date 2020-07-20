@@ -13,19 +13,19 @@
   margin: 0;
   margin-bottom: 2em;
   top: 0;
-  background-color: #f2f2f2;
+  background-color: #cecdcdbe;
   z-index: 2;
 }
 
 .header {
-  background-color: #41004e;
+  background-color: #360041e1;
   text-align: center;
 }
 
 .nav-link {
   float: left;
   color: #5c006e;
-  background-color: #f2f2f2;
+  background-color: #cecdcd00;
   text-align: center;
   padding: 0.5em 1.5em;
   text-decoration: none;
@@ -38,10 +38,10 @@
   outline: 0;
 }
 
-/* .nav-link:hover {
+.nav-link:hover {
   color: #f2f2f2;
   background-color: #5c006e;
-} */
+}
 
 .nav-left {
   float: left;

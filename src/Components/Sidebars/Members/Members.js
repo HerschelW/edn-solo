@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 
 import { connect } from "react-redux";
+import { Text } from "@chakra-ui/core";
 
 class PostItem extends Component {
   state = {
@@ -14,9 +15,9 @@ class PostItem extends Component {
     const { member } = this.props;
     return (
       <div className="memberItem">
-        <p>
+        <Text>
           {member.first_name} {member.last_name}
-        </p>
+        </Text>
       </div>
     );
   }
