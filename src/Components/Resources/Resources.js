@@ -3,7 +3,7 @@ import ResourceItem from "./ResourceItem/ResourceItem";
 import { connect } from "react-redux";
 import "./Resources.css";
 import RightSide from "../Sidebars/RightSibebar";
-import { Box, Button, IconButton } from "@chakra-ui/core";
+import { Box, Button, IconButton, Flex, Stack } from "@chakra-ui/core";
 
 class Resources extends Component {
   componentDidMount() {
@@ -16,16 +16,26 @@ class Resources extends Component {
 
   render() {
     return (
-      <div className="content">
-        <RightSide />
-        <Box>
-          <Button onClick={this.toNewResource}>Add Resource</Button>
-          {this.props.resources.resources.map((resourceItem) => {
-            return (
-              <ResourceItem key={resourceItem.id} resourceItem={resourceItem} />
-            );
-          })}
-        </Box>
+      <div>
+        <Flex mt="10%">
+          <Stack alignItems="center">
+            <Button width="10%" onClick={this.toNewResource} textAlign="center">
+              Add Resource
+            </Button>
+            <Stack>
+              {this.props.resources.resources.map((resourceItem) => {
+                return (
+                  <Box width="80%" alignItems="center" m="auto" mt={2}>
+                    <ResourceItem
+                      key={resourceItem.id}
+                      resourceItem={resourceItem}
+                    />
+                  </Box>
+                );
+              })}
+            </Stack>
+          </Stack>
+        </Flex>
       </div>
     );
   }

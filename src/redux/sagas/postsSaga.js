@@ -91,6 +91,14 @@ function* fetchPostAuthor(action) {
   }
 }
 
+function* addPostLike(action) {
+  try {
+    yield Axios.put("api/likes/posts", action.payload);
+  } catch (error) {
+    alert("unable to add post like to server");
+  }
+}
+
 function* postsSaga() {
   yield takeEvery("FETCH_POSTS", fetchPosts);
   yield takeEvery("FETCH_POST_DETAIL", fetchPostDetail);
@@ -99,6 +107,7 @@ function* postsSaga() {
   yield takeEvery("ADD_POST", addPost);
   yield takeEvery("DELETE_POST", deletePost);
   yield takeEvery("FETCH_POST_AUTHOR", fetchPostAuthor);
+  yield takeEvery("ADD_POST_LIKE", addPostLike);
 }
 
 export default postsSaga;

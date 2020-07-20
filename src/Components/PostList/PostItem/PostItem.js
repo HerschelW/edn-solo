@@ -13,29 +13,28 @@ import {
   Link,
 } from "@chakra-ui/core";
 import AddComment from "../../Comment/AddComment";
-import Thread from "../../Thread/PostThread";
 import Axios from "axios";
-import {
-  PRIMARY_COLOR,
-  VARIANT_COLOR,
-} from "../../ThemeSelector/ThemeSelector";
 
 class PostItem extends Component {
   state = {
     comments: {
       comments: 0,
     },
+    likes: 0,
+
     displayThread: false,
   };
 
-  // this.props.dispatch({
-  //   type: "FETCH_POST_COMMENTS",
-  //   payload: this.props.postItem.id,
-  // });
-
   componentDidMount() {
     this.updateComments();
+    this.updateLikes();
   }
+
+  updateLikes = () => {
+    this.setState({
+      likes: this.props.postItem.likes,
+    });
+  };
 
   updateComments = () => {
     Axios.get(`api/posts/comments/${this.props.postItem.id}`)
@@ -56,9 +55,18 @@ class PostItem extends Component {
     }
   };
 
-  // addPostLike = () => {
-  //   //
-  // };
+  addPostLike = (event) => {
+    const payObj = { id: event.target.id };
+    console.log(payObj);
+    console.log(this.props.postItem.id);
+    this.setState({
+      likes: this.props.postItem.likes + 1,
+    });
+    this.props.dispatch({
+      type: "ADD_POST_LIKE",
+      payload: payObj,
+    });
+  };
 
   // Axios.delete(`/api/posts/${event.target.id}`)
 
@@ -75,8 +83,6 @@ class PostItem extends Component {
 
   addPostComment = (event) => {};
 
-  addPostLike = (event) => {};
-
   editPost = (event) => {};
 
   render() {
@@ -89,7 +95,7 @@ class PostItem extends Component {
     };
 
     const likeOrLikes = () => {
-      if (this.props.postItem.likes === 1) {
+      if (this.state.likes === 1) {
         return "Like";
       } else {
         return "Likes";
@@ -130,7 +136,7 @@ class PostItem extends Component {
             <Text mb={8}>{this.props.postItem.post_body}</Text>
             <Stack isInline width="full" justifyContent="center">
               <Text p={2}>
-                {this.props.postItem.likes} {likeOrLikes()}
+                {this.state.likes} {likeOrLikes()}
               </Text>
               <Text p={2}>
                 {this.state.comments.comments.length} {commentOrcomments()}
@@ -210,15 +216,15 @@ class PostItem extends Component {
             p={4}
             py={8}
           >
-            <Heading as="h3" size="lg">
+            {/* <div className="postItem"> */}
+            <Heading as="h3" size="lg" mb={2}>
               {this.props.postItem.post_title}
             </Heading>
             <Text>By</Text>
             <Heading mb={2} as="h5" size="sm">
               {this.props.postItem.first_name}
             </Heading>
-            <Text p={2}>{this.props.postItem.likes} Likes</Text>
-            <Link p={2}>{this.state.comments.length} Comments</Link>
+            <Text mb={8}>{this.props.postItem.post_body}</Text>
             <Stack isInline width="full" justifyContent="center">
               <Text p={2}>
                 {this.props.postItem.likes} {likeOrLikes()}
@@ -237,11 +243,38 @@ class PostItem extends Component {
             <br />
             <br />
             <Link pt={4} onClick={this.switchDisplay}>
-              View Thread
+              {viewOrClose()}
             </Link>
 
             {this.state.displayThread ? (
               <>
+                <Box>
+                  {this.state.comments.comments.map((comment) => {
+                    return (
+                      <Flex justifyContent="center">
+                        <Box
+                          textAlign="left"
+                          borderWidth={1}
+                          borderRadius="lg"
+                          px={2}
+                          width="full"
+                          maxWidth="90%"
+                          boxShadow="lg"
+                          p={1}
+                          py={1}
+                          mb={2}
+                        >
+                          <Text>
+                            <Heading as="h5" size="sm">
+                              {comment.first_name}:
+                            </Heading>{" "}
+                            {comment.body}
+                          </Text>
+                        </Box>
+                      </Flex>
+                    );
+                  })}
+                </Box>
                 <AddComment
                   postItem={this.props.postItem}
                   userID={this.props.user.id}

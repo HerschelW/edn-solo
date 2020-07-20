@@ -91,6 +91,23 @@ router.post("/comments", rejectUnauthenticated, (req, res) => {
     .catch(() => res.sendStatus(500));
 });
 
+router.get("/comments/:id", (req, res) => {
+  console.log("getting resource comments", req.params);
+  const resourceID = req.params.id;
+  const queryText = `SELECT resource_comments.id, resource_comments.user_id, resource_comments.body, resource_comments.resource_id, users.id, users.first_name FROM resource_comments
+  JOIN users ON users.id = resource_comments.user_id
+  WHERE resource_id = $1 ORDER BY resource_comments.id`;
+  pool
+    .query(queryText, [resourceID])
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((error) => {
+      console.log("Error making SELECT in resources router 102", error);
+      res.sendStatus(500);
+    });
+});
+
 /**
  * Return all users along with the total number of posts
  * they have added to the table

@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { put, takeEvery } from "redux-saga/effects";
+import { put, takeEvery, take } from "redux-saga/effects";
 
 // function to get Posts
 function* fetchResources(action) {
@@ -82,6 +82,15 @@ function* deleteResource(action) {
   }
 }
 
+function* addResourceLike(action) {
+  console.log("in Saga", action.payload);
+  try {
+    yield Axios.put("api/likes/resources", action.payload);
+  } catch (error) {
+    alert("unable to add resource like to server" + error);
+  }
+}
+
 function* resourceSaga() {
   yield takeEvery("FETCH_RESOURCES", fetchResources);
   yield takeEvery("FETCH_RESOURCES_DETAIL", fetchResourcesDetail);
@@ -89,6 +98,7 @@ function* resourceSaga() {
   yield takeEvery("FETCH_CURRENT_RESOURCE", fetchCurrentResource);
   yield takeEvery("ADD_RESOURCE", addResources);
   yield takeEvery("DELETE_RESOURCE", deleteResource);
+  yield takeEvery("ADD_RESOURCE_LIKE", addResourceLike);
 }
 
 export default resourceSaga;

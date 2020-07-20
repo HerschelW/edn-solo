@@ -116,6 +116,16 @@ router.get("/comments/:id", (req, res) => {
     });
 });
 
+router.put("/likes", (req, res) => {
+  console.log("adding post like to the database", req.params);
+  const postID = req.params.id;
+  const queryText = `UPDATE posts SET likes = likes + 1 WHERE id = $1`;
+  pool
+    .query(queryText[postID])
+    .then(() => res.sendStatus(201))
+    .catch(() => sendStatus(500));
+});
+
 /**
  * Return all users along with the total number of posts
  * they have added to the table
